@@ -1,0 +1,56 @@
+{
+  "name": "pkg-name",
+  "type": "module",
+  "version": "0.0.0",
+  "private": false,
+  "description": "",
+  "author": "lvjiaxuan <471501748@qq.com> (https://github.com/lvjiaxuan)",
+  "license": "MIT",
+  "homepage": "https://github.com/lvjiaxuan/pkg-name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lvjiaxuan/pkg-name"
+  },
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "echo dev",
+    "build": "echo build",
+    "test": "vitest",
+    "lint": "oxlint && eslint",
+    "lint:fix": "oxlint --fix && eslint --fix",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "@lvjiaxuan/eslint-config": "^1.10.1",
+    "@types/node": "^20.14.2",
+    "eslint": "^9.4.0",
+    "oxlint": "^0.4.3",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": [
+      "pnpm dlx lint-staged"
+    ]
+  },
+  "lint-staged": {
+    "*": "pnpm run lint:fix"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
+}
